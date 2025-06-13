@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>not Ghosting</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 30px 20px 100px;
+    }
+    nav {
+      background-color: #111;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid #ff5555;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    nav ul li {
+      display: inline-block;
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: #eee;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      background-color: #ff5555;
+      color: #fff;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #ff5555;
+      margin-bottom: 20px;
+      margin-top: 40px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 40px;
+      color: #ff8888;
+    }
+    h3 {
+      font-size: 1.4rem;
+      color: #ffaaaa;
+      margin-top: 30px;
+    }
+    p, li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 15px auto;
+      color: #dddddd;
+    }
+    .content-list {
+        text-align: left;
+        display: inline-block;
+    }
+    .cta-button {
+      display: inline-block;
+      background-color: #ff5555;
+      color: white;
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #ff7777;
+    }
+    .q-and-a h3 { /* Question Style */
+        color: #66ccff;
+    }
+    .q-and-a p { /* Answer Style */
+        border-left: 3px solid #666;
+        padding-left: 15px;
+        color: #ccc;
+    }
+    .ghost {
+      position: fixed; font-size: 3rem; opacity: 0.3; pointer-events: none; z-index: 100;
+      animation: float 6s ease-in-out infinite;
+    }
+    .ghost1 { top: 20%; left: 15%; animation-delay: 0s; }
+    .ghost2 { top: 35%; right: 15%; animation-delay: -2s; }
+    .ghost3 { top: 55%; left: 12%; animation-delay: -4s; }
+    .ghost4 { top: 70%; right: 18%; animation-delay: -1s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-20px) rotate(2deg); }
+      50% { transform: translateY(-10px) rotate(-1deg); }
+      75% { transform: translateY(-25px) rotate(1deg); }
+    }
+    .section { display: none; }
+    .section.active { display: block; }
+    .legal {
+      font-size: 0.9rem; max-width: 600px; text-align: left; background-color: rgba(17, 24, 39, 0.5);
+      padding: 20px; border-radius: 10px; margin: 20px auto;
+    }
+    .legal h3 { color: #ff8888; font-size: 1.2rem; margin-bottom: 10px; }
+    .legal a { color: #66ccff; }
+    .close-btn {
+      display: inline-block; background-color: #555; color: white; border: none; padding: 10px 20px;
+      margin-top: 20px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; text-decoration: none;
+    }
+    .close-btn:hover { background-color: #777; }
+    footer {
+      margin-top: 50px; padding-top: 20px; border-top: 1px solid #333;
+      font-size: 0.8rem; color: #888;
+    }
+    .cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; background-color: rgba(0, 0, 0, 0.95);
+      color: white; padding: 20px; z-index: 2000; text-align: center; border-top: 2px solid #ff5555; display: none;
+    }
+    .cookie-banner p { margin: 0 0 15px 0; font-size: 0.9rem; }
+    .cookie-banner button {
+      background-color: #ff5555; color: white; border: none; padding: 10px 20px; margin: 0 10px;
+      border-radius: 5px; cursor: pointer; font-size: 0.9rem;
+    }
+    .cookie-banner button.decline { background-color: #666; }
+    .cookie-banner button:hover { opacity: 0.8; }
+    .cookie-banner a { color: #66ccff; text-decoration: underline; }
+    
+    /* --- Responsive Design Anpassungen --- */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.6rem; }
+      p, li { font-size: 1.05rem; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.4rem; }
+      p, li { font-size: 1rem; }
+      .ghost { font-size: 2rem; }
+      nav ul li { margin: 0 5px; }
+      nav ul li a { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#" onclick="showSection(event, 'home')" class="nav-link active">Home</a></li>
+      <li><a href="#" onclick="showSection(event, 'understand')" class="nav-link">Understand Ghosting</a></li>
+      <li><a href="#" onclick="showSection(event, 'selfworth')" class="nav-link">Self-Worth & Healing</a></li>
+      <li><a href="#" onclick="showSection(event, 'q-and-a')" class="nav-link">Ghosting Q&A</a></li>
+    </ul>
+  </nav>
+
+  <div class="ghost ghost1">👻</div>
+  <div class="ghost ghost2">👻</div>
+  <div class="ghost ghost3">👻</div>
+  <div class="ghost ghost4">👻</div>
+
+  <div id="cookieBanner" class="cookie-banner">
+      <p>We use cookies to enhance your experience and to show personalized advertisements with your consent. By clicking "Accept", you agree to the use of cookies for functionality and advertising. For more details, please see our <a href="#" onclick="showSection(event, 'privacy')">Privacy Policy</a>.</p>
+      <button onclick="acceptCookies()">Accept</button>
+      <button onclick="declineCookies()" class="decline">Decline</button>
+  </div>
+
+  <div class="content">
+    
+    <div id="home" class="section active">
+      <h1>not Ghosting</h1>
+      <h2>Been Ghosted? You're Not Alone. <br>Find Answers, Comfort, and a Reason to Laugh Here.</h2>
+      <p>Ghosting can be confusing and painful. But it says more about the ghoster than it does about you. Here, you'll learn why it happens, how to deal with it, and how to strengthen your self-worth—with a dose of humor.</p>
+      <div>
+        <a href="#" onclick="showSection(event, 'understand')" class="cta-button">What is Ghosting?</a>
+        <a href="#" onclick="showSection(event, 'selfworth')" class="cta-button">How to Move On</a>
+        <a href="#" onclick="showSection(event, 'q-and-a')" class="cta-button">Humor Helps!</a>
+      </div>
+    </div>
+
+    <div id="understand" class="section">
+      <h1>Lifting the Veil: Why People Ghost and How to React</h1>
+      <p>Ghosting isn't just annoying; it's often painful. But when we understand why it happens, we can put it into perspective and protect ourselves.</p>
+      <h2>Why do people really ghost?</h2>
+      <p>Ghosting often isn't driven by malicious intent but by being overwhelmed or lacking communication skills. Some people don't know how to break up honestly or handle uncomfortable conversations. They hope everything will "resolve itself." Unfortunately, the exact opposite happens: uncertainty, pain, and open questions for the person who's been ghosted. It's also important to understand that even if not meant maliciously, ghosting can be a form of passive-aggressive behavior, as it shifts the responsibility of communication onto the other person.</p>
+      <h2>The New Dating Lingo: Orbiting, Benching & Zombieing</h2>
+      <p>It's not just ghosting—modern dating has many variations that can be just as confusing:</p>
+      <ul class="content-list">
+          <li><strong>Orbiting:</strong> They don't message you, but they keep liking your stories. A kind of "digital presence without real contact."</li>
+          <li><strong>Benching:</strong> You're kept on the sidelines, but you don't get real affection or a clear commitment. You're essentially on the substitute bench.</li>
+          <li><strong>Zombieing:</strong> After months or even years, the person suddenly reappears as if nothing happened.</li>
+      </ul>
+      <p>These phenomena are often confusing—but they say more about the other person than about you.</p>
+      <h2>What to Say Instead—Concrete Sentence Examples</h2>
+      <p>Ghosting often happens because people think, "I don't know how to say it." But a few simple sentences are enough to be fair and avoid unnecessary pain:</p>
+      <ul class="content-list">
+          <li>"I don't think this is the right fit for me."</li>
+          <li>"I realize I'm not really open to something new right now."</li>
+          <li>"It's not you—I'm just not in a place for this."</li>
+          <li>"I feel like our expectations don't align."</li>
+          <li>"I'm not in a position to give you what you deserve."</li>
+      </ul>
+    </div>
+
+    <div id="selfworth" class="section">
+      <h1>Your Power After Ghosting: Rebuild Your Self-Worth and Start Fresh</h1>
+      <p>Ghosting can leave a deep scratch on your self-worth. But your reaction to it determines how quickly and strongly you emerge. It's time to put yourself first.</p>
+      <h2>What you can do if you've been ghosted</h2>
+      <p>Ghosting feels like rejection—but it's usually just a sign of the other person's lack of maturity or communication skills. You're allowed to be disappointed, sad, and angry. But don't make yourself small. Tell yourself: anyone who can't talk to me isn't on my level. Make peace with what was left unsaid and redirect your energy toward yourself.</p>
+      <h2>Your self-worth doesn't depend on others</h2>
+      <p>Ghosting hits your self-worth because it makes you feel like you're not good enough or did something wrong. But your value doesn't change just because someone goes silent. Think about your friends, about situations where you were strong, competent, or simply yourself. Write down what makes you, you. You are not the behavior of others—you are more than a reaction or non-reaction.</p>
+      <h2>Humor Helps: The Best Comebacks (Even If You Never Send Them)</h2>
+      <p>Sometimes, a bit of sarcasm and mental wit helps to release frustration and diffuse the situation. These lines are for you—as an outlet, not to be sent:</p>
+      <ul class="content-list">
+          <li>"Sorry, I thought you'd been kidnapped. The police already had a missing persons report out for your manners."</li>
+          <li>"Did your Wi-Fi go out, or just your spine?"</li>
+          <li>"I heard silence is golden. You must be rich."</li>
+          <li>"My grandma still texted me when she was on vacation. Your battery was dead for three days? Impressive!"</li>
+      </ul>
+      <p>You don't have to send it. But it helps to have an outlet and to see the absurdity of the situation.</p>
+    </div>
+
+    <div id="q-and-a" class="section q-and-a">
+        <h1>The Ghosting Clinic: When the Ghost Speaks—Or Doesn't</h1>
+        <p>Ghosting often leaves more questions than answers. We've collected the most common ones and answered them—with a wink, because laughter is the best medicine (after a good glass of wine, of course).</p>
+        <h3>Question: I texted him, he read it, but didn't reply. What now?</h3>
+        <p>Answer: Congratulations, you're officially in ghost mode. Don't wait—sip some tea, block the ghost, and move on. Your phone is for communicating, not for summoning spirits.</p>
+        <h3>Question: He still likes my Insta stories. Is that a sign?</h3>
+        <p>Answer: Yes—a sign that his thumb works. But nothing more. Or he's just bored in his orbit.</p>
+        <h3>Question: She said she needed time. Now she's engaged. What should I believe?</h3>
+        <p>Answer: Believe in karma. Or in her talent for multitasking. And that "needing time" often means "needing time to find someone better."</p>
+        <h3>Question: He says his battery was dead. For three days. Is that possible?</h3>
+        <p>Answer: Yes. If he lost his phone in the Mariana Trench or parked in the Bermuda Triangle. For everything else, there are power banks and outlets.</p>
+        <h3>Question: I sent ten messages. No reaction. Was that too much?</h3>
+        <p>Answer: No, that's called engagement. He calls it: "reason for radio silence." Or he's just afraid of commitment.</p>
+        <h3>Question: I want to know what went wrong. Should I ask again?</h3>
+        <p>Answer: Sure. And right after, you should also ask the delivery guy why he left so silently last week. Some things are just better left unsaid.</p>
+        <h3>Question: How do I know if I've been ghosted?</h3>
+        <p>Answer: If you're refreshing the chat history more often than your bank account balance—yep, that's it. Or if you're doing more solo detective work than Sherlock Holmes.</p>
+        <h3>Question: Why do people even ghost?</h3>
+        <p>Answer: Because saying "I'm not interested" requires more courage than three months of silence. Or because they never learned how to communicate like an adult.</p>
+        <h3>Question: Can I text him one more time, just to be sure?</h3>
+        <p>Answer: Sure. And then go hang a note on a black hole—just in case. Some holes are just meant to stay empty.</p>
+        <h3>Question: What's the best final thing to text him?</h3>
+        <p>Answer: Nothing. His karma will take care of it. Or the realization of what he missed out on. Sometimes, silence is the best response.</p>
+    </div>
+
+    <div id="legal" class="section">
+      <div class="legal">
+        <h3>Legal Notice</h3>
+        <p><strong>Information according to § 5 TMG</strong><br>
+        Petra Neidt<br>
+        Tiroler Str. 2<br>
+        22049 Hamburg<br>
+        Germany</p>
+        <p><strong>Contact</strong><br>
+        E-Mail: npetra2500@gmail.com</p>
+        <p><strong>Responsible for content according to § 18 Abs. 2 MStV:</strong><br>
+        Petra Neidt, address as above.</p>
+        <button class="close-btn" onclick="showSection(event, 'home')">Back to Homepage</button>
+      </div>
+    </div>
+    <div id="privacy" class="section">
+      <div class="legal">
+        <h3>Privacy Policy</h3>
+        <h3>1. Data Protection at a Glance</h3>
+        <p>The following notes provide a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you could be personally identified. Detailed information on the subject of data protection can be found in our privacy policy found below.</p>
+        <h3>2. Hosting</h3>
+        <p>This website is hosted by an external service provider (hoster). The personal data collected on this website is stored on the hoster's servers. This may include, but is not limited to, IP addresses, contact requests, meta and communication data, contract data, contact details, names, website access, and other data generated through a website.</p>
+        <p>The use of the hoster is for the purpose of fulfilling the contract with our potential and existing customers and in the interest of a secure, fast, and efficient provision of our online services by a professional provider.</p>
+        <h3>3. General Information and Mandatory Information</h3>
+        <p><strong>Responsible Party</strong><br>
+        The responsible party for data processing on this website is:<br>
+        Petra Neidt<br>
+        Tiroler Str. 2<br>
+        22049 Hamburg<br>
+        E-Mail: npetra2500@gmail.com</p>
+        <p><strong>Withdrawal of Your Consent to Data Processing</strong><br>
+        Many data processing operations are only possible with your express consent. You can revoke consent you have already given at any time. The legality of the data processing carried out until the revocation remains unaffected by the revocation. You can withdraw your consent via the "Cookie Settings" link in the footer of this page.</p>
+        <p><strong>Right to Lodge a Complaint with a Supervisory Authority</strong><br>
+        In the case of breaches of the GDPR, the persons concerned have the right to lodge a complaint with a supervisory authority, in particular in the Member State of their habitual residence, their place of work or the place of the alleged breach.</p>
+        <h3>4. Cookies and Consent Management</h3>
+        <p>Our website uses cookies. We use a consent management tool to manage the cookies and similar technologies used and the related consents.</p>
+        <p><strong>Necessary Cookies:</strong> We use technically necessary cookies to ensure basic website functions and to store your consent decision. This processing is necessary for the provision of our website.</p>
+        <p><strong>Advertising Cookies (Google AdSense):</strong> With your express consent, we use cookies from Google AdSense to display personalized advertisements. These cookies help Google and its partners to serve ads based on your visit to our sites and/or other sites on the Internet. This data processing only takes place if you click "Accept" in the cookie banner.</p>
+        <h3>5. Google AdSense</h3>
+        <p>This website uses Google AdSense, a service for integrating advertisements from Google Ireland Limited ("Google"). Google AdSense uses cookies that are stored on your computer and that allow an analysis of the use of the website.</p>
+        <p>The information generated by the cookie about your use of this website (including your IP address) is transmitted to a Google server in the USA and stored there. Google will use this information to evaluate your use of the website in order to compile reports on website activity for website operators and to provide other services related to website activity and internet usage. The use of Google AdSense is based on your consent, which you can give via our cookie banner.</p>
+        <button class="close-btn" onclick="showSection(event, 'home')">Back to Homepage</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 not Ghosting. All rights reserved.</p>
+    <p>
+      <a href="#" onclick="showSection(event, 'legal')" style="color: #888;">Legal Notice</a> | 
+      <a href="#" onclick="showSection(event, 'privacy')" style="color: #888;">Privacy Policy</a> |
+      <a href="#" onclick="openCookieSettings(event)" style="color: #888;">Cookie Settings</a>
+    </p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cookieBanner = document.getElementById('cookieBanner');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      // --- Cookie Consent Logic ---
+      function loadMarketingScripts() {
+        console.log('MARKETING SCRIPTS WOULD LOAD NOW.');
+      }
+      const cookieConsent = localStorage.getItem('cookieConsent');
+      if (cookieConsent === 'accepted') {
+        loadMarketingScripts();
+      } else if (!cookieConsent) {
+        cookieBanner.style.display = 'block';
+      }
+      window.acceptCookies = function() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        cookieBanner.style.display = 'none';
+        loadMarketingScripts();
+      }
+      window.declineCookies = function() {
+        localStorage.setItem('cookieConsent', 'declined');
+        cookieBanner.style.display = 'none';
+      }
+      window.openCookieSettings = function(event) {
+          if(event) event.preventDefault();
+          cookieBanner.style.display = 'block';
+      }
+
+      // --- Section Navigation Logic ---
+      window.showSection = function(event, sectionName) {
+        if(event) event.preventDefault();
+        
+        document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+        
+        const activeSection = document.getElementById(sectionName);
+        if (activeSection) {
+          activeSection.classList.add('active');
+        }
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('onclick').includes(`'${sectionName}'`)) {
+                link.classList.add('active');
+            }
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
