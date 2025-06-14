@@ -108,16 +108,23 @@
     .section { display: none; }
     .section.active { display: block; }
     .legal {
-      font-size: 0.9rem; max-width: 600px; text-align: left; background-color: rgba(17, 24, 39, 0.5);
-      padding: 20px; border-radius: 10px; margin: 20px auto;
+      font-size: 0.9rem; max-width: 800px; text-align: left; background-color: rgba(17, 24, 39, 0.5);
+      padding: 30px; border-radius: 10px; margin: 20px auto;
     }
-    .legal h3 { color: #ff8888; font-size: 1.2rem; margin-bottom: 10px; }
-    .legal a { color: #66ccff; }
+    .legal h1 { color: #ff5555; text-align: center; }
+    .legal h2 { color: #ff8888; font-size: 1.4rem; margin-top: 25px; margin-bottom: 15px; }
+    .legal h3 { color: #ffaaaa; font-size: 1.2rem; margin-top: 20px; margin-bottom: 10px; }
+    .legal p { color: #dddddd; max-width: none; margin: 10px 0; }
+    .legal ul { color: #dddddd; max-width: none; margin: 10px 0; padding-left: 20px; }
+    .legal li { color: #dddddd; max-width: none; margin: 5px 0; }
+    .legal a { color: #66ccff; text-decoration: underline; }
+    .legal a:hover { color: #88ddff; }
     .close-btn {
-      display: inline-block; background-color: #555; color: white; border: none; padding: 10px 20px;
-      margin-top: 20px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; text-decoration: none;
+      display: inline-block; background-color: #ff5555; color: white; border: none; padding: 12px 25px;
+      margin-top: 30px; border-radius: 5px; cursor: pointer; font-size: 1rem; text-decoration: none;
+      font-weight: bold; transition: background-color 0.3s;
     }
-    .close-btn:hover { background-color: #777; }
+    .close-btn:hover { background-color: #ff7777; }
     footer {
       margin-top: 50px; padding-top: 20px; border-top: 1px solid #333;
       font-size: 0.8rem; color: #888;
@@ -140,6 +147,7 @@
       h1 { font-size: 2.2rem; }
       h2 { font-size: 1.6rem; }
       p, li { font-size: 1.05rem; }
+      .legal { padding: 20px; }
     }
     @media (max-width: 480px) {
       h1 { font-size: 2rem; }
@@ -148,6 +156,7 @@
       .ghost { font-size: 2rem; }
       nav ul li { margin: 0 5px; }
       nav ul li a { font-size: 1rem; }
+      .legal { padding: 15px; }
     }
   </style>
 </head>
@@ -254,45 +263,210 @@
 
     <div id="legal" class="section">
       <div class="legal">
-        <h3>Legal Notice</h3>
-        <p><strong>Information according to § 5 TMG</strong><br>
+        <h1>Legal Notice (Impressum)</h1>
+        
+        <h2>Information according to § 5 TMG</h2>
+        <p><strong>Responsible for content:</strong><br>
         Petra Neidt<br>
         Tiroler Str. 2<br>
         22049 Hamburg<br>
         Germany</p>
-        <p><strong>Contact</strong><br>
-        E-Mail: npetra2500@gmail.com</p>
-        <p><strong>Responsible for content according to § 18 Abs. 2 MStV:</strong><br>
-        Petra Neidt, address as above.</p>
+        
+        <h2>Contact Information</h2>
+        <p><strong>Email:</strong> <a href="mailto:npetra2500@gmail.com">npetra2500@gmail.com</a></p>
+        
+        <h2>VAT Information</h2>
+        <p>According to § 19 UStG (German VAT Act), no VAT is charged as the small business regulation applies.</p>
+        
+        <h2>Responsible for content according to § 18 Abs. 2 MStV</h2>
+        <p>Petra Neidt<br>
+        Address as stated above</p>
+        
+        <h2>Dispute Resolution</h2>
+        <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a></p>
+        <p>We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+        
+        <h2>Liability for Contents</h2>
+        <p>As service providers, we are liable for own contents of these websites according to Sec. 7, para.1 German Telemedia Act (TMG). However, according to Sec. 8 to 10 German Telemedia Act (TMG), service providers are not under obligation to permanently monitor submitted or stored information or to search for evidences that indicate illegal activities.</p>
+        <p>Legal obligations to removing information or to blocking the use of information remain unchallenged. In this case, liability is only possible at the time of knowledge about a specific violation of law. Illegal contents will be removed immediately at the time we get knowledge of them.</p>
+        
+        <h2>Liability for Links</h2>
+        <p>Our offer includes links to external third party websites. We have no influence on the contents of those websites, therefore we cannot guarantee for those contents. Providers or administrators of linked websites are always responsible for the contents of the linked websites. Linked websites had been checked for possible violations of law at the time of the establishment of the link. Illegal contents were not detected at the time of the linking.</p>
+        <p>A permanent monitoring of the contents of linked websites cannot be imposed without reasonable indications that there has been a violation of law. Illegal links will be removed immediately at the time we get knowledge of them.</p>
+        
+        <h2>Copyright</h2>
+        <p>Contents and compilations published on these websites by the providers are subject to German copyright laws. Reproduction, editing, distribution as well as the use of any kind outside the scope of the copyright law require a written permission of the author or originator. Downloads and copies of these websites are permitted for private use only.</p>
+        <p>The commercial use of our contents without permission of the originator is prohibited.</p>
+        <p>Copyright laws of third parties are respected as long as the contents on these websites do not originate from the provider. Contributions of third parties on this site are indicated as such. However, if you notice any violations of copyright law, please inform us. Such contents will be removed immediately.</p>
+        
         <button class="close-btn" onclick="showSection(event, 'home')">Back to Homepage</button>
       </div>
     </div>
+
     <div id="privacy" class="section">
       <div class="legal">
-        <h3>Privacy Policy</h3>
-        <h3>1. Data Protection at a Glance</h3>
-        <p>The following notes provide a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you could be personally identified. Detailed information on the subject of data protection can be found in our privacy policy found below.</p>
-        <h3>2. Hosting</h3>
-        <p>This website is hosted by an external service provider (hoster). The personal data collected on this website is stored on the hoster's servers. This may include, but is not limited to, IP addresses, contact requests, meta and communication data, contract data, contact details, names, website access, and other data generated through a website.</p>
-        <p>The use of the hoster is for the purpose of fulfilling the contract with our potential and existing customers and in the interest of a secure, fast, and efficient provision of our online services by a professional provider.</p>
-        <h3>3. General Information and Mandatory Information</h3>
-        <p><strong>Responsible Party</strong><br>
-        The responsible party for data processing on this website is:<br>
+        <h1>Privacy Policy (Datenschutzerklärung)</h1>
+        
+        <h2>1. Data Protection at a Glance</h2>
+        <h3>General Information</h3>
+        <p>The following notes provide a simple overview of what happens to your personal data when you visit this website. Personal data is any data with which you could be personally identified. Detailed information on the subject of data protection can be found in our privacy policy listed below this text.</p>
+        
+        <h3>Data Collection on this Website</h3>
+        <p><strong>Who is responsible for data collection on this website?</strong><br>
+        Data processing on this website is carried out by the website operator. You can find the operator's contact details in the section "Information about the responsible party" in this privacy policy.</p>
+        
+        <p><strong>How do we collect your data?</strong><br>
+        Your data is collected firstly by you providing it to us. This may be data that you enter in a contact form, for example. Other data is collected automatically or with your consent by our IT systems when you visit the website. This is primarily technical data (e.g. internet browser, operating system or time of page call). This data is collected automatically as soon as you enter this website.</p>
+        
+        <p><strong>What do we use your data for?</strong><br>
+        Some of the data is collected to ensure error-free provision of the website. Other data may be used to analyze your user behavior.</p>
+        
+        <p><strong>What rights do you have regarding your data?</strong><br>
+        You have the right at any time to receive information about the origin, recipient and purpose of your stored personal data free of charge. You also have the right to request the correction or deletion of this data. If you have given your consent to data processing, you can revoke this consent at any time for the future. You also have the right to request the restriction of the processing of your personal data under certain circumstances. Furthermore, you have the right to lodge a complaint with the competent supervisory authority.</p>
+        
+        <h2>2. Hosting</h2>
+        <p>This website is hosted by an external service provider (host). The personal data collected on this website is stored on the host's servers. This may include IP addresses, contact requests, metadata and communication data, contract data, contact details, names, website accesses and other data generated via a website.</p>
+        <p>The host is used for the purpose of contract fulfillment towards our potential and existing customers (Art. 6 para. 1 lit. b GDPR) and in the interest of a secure, fast and efficient provision of our online offering by a professional provider (Art. 6 para. 1 lit. f GDPR). If appropriate consent has been requested, processing is carried out exclusively on the basis of Art. 6 para. 1 lit. a GDPR and § 25 para. 1 TTDSG, insofar as the consent includes the storage of cookies or access to information in the user's terminal device (e.g. device fingerprinting) within the meaning of TTDSG. Consent can be revoked at any time.</p>
+        
+        <h2>3. General Information and Mandatory Information</h2>
+        <h3>Data Protection</h3>
+        <p>The operators of these pages take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with the statutory data protection regulations and this privacy policy.</p>
+        <p>When you use this website, various personal data is collected. Personal data is data with which you can be personally identified. This privacy policy explains what data we collect and what we use it for. It also explains how and for what purpose this is done.</p>
+        <p>We would like to point out that data transmission over the Internet (e.g. communication by email) can have security gaps. A complete protection of data against access by third parties is not possible.</p>
+        
+        <h3>Information about the responsible party</h3>
+        <p>The responsible party for data processing on this website is:<br><br>
         Petra Neidt<br>
         Tiroler Str. 2<br>
         22049 Hamburg<br>
-        E-Mail: npetra2500@gmail.com</p>
-        <p><strong>Withdrawal of Your Consent to Data Processing</strong><br>
-        Many data processing operations are only possible with your express consent. You can revoke consent you have already given at any time. The legality of the data processing carried out until the revocation remains unaffected by the revocation. You can withdraw your consent via the "Cookie Settings" link in the footer of this page.</p>
-        <p><strong>Right to Lodge a Complaint with a Supervisory Authority</strong><br>
-        In the case of breaches of the GDPR, the persons concerned have the right to lodge a complaint with a supervisory authority, in particular in the Member State of their habitual residence, their place of work or the place of the alleged breach.</p>
-        <h3>4. Cookies and Consent Management</h3>
-        <p>Our website uses cookies. We use a consent management tool to manage the cookies and similar technologies used and the related consents.</p>
-        <p><strong>Necessary Cookies:</strong> We use technically necessary cookies to ensure basic website functions and to store your consent decision. This processing is necessary for the provision of our website.</p>
-        <p><strong>Advertising Cookies (Google AdSense):</strong> With your express consent, we use cookies from Google AdSense to display personalized advertisements. These cookies help Google and its partners to serve ads based on your visit to our sites and/or other sites on the Internet. This data processing only takes place if you click "Accept" in the cookie banner.</p>
-        <h3>5. Google AdSense</h3>
-        <p>This website uses Google AdSense, a service for integrating advertisements from Google Ireland Limited ("Google"). Google AdSense uses cookies that are stored on your computer and that allow an analysis of the use of the website.</p>
-        <p>The information generated by the cookie about your use of this website (including your IP address) is transmitted to a Google server in the USA and stored there. Google will use this information to evaluate your use of the website in order to compile reports on website activity for website operators and to provide other services related to website activity and internet usage. The use of Google AdSense is based on your consent, which you can give via our cookie banner.</p>
+        Germany<br><br>
+        Email: <a href="mailto:npetra2500@gmail.com">npetra2500@gmail.com</a></p>
+        
+        <p>The responsible party is the natural or legal person who alone or jointly with others determines the purposes and means of processing personal data (e.g. names, email addresses, etc.).</p>
+        
+        <h3>Storage Duration</h3>
+        <p>Unless a more specific storage period has been specified in this privacy policy, your personal data will remain with us until the purpose for data processing no longer applies. If you assert a legitimate request for deletion or revoke consent to data processing, your data will be deleted unless we have other legally permissible reasons for storing your personal data (e.g. tax or commercial law retention periods); in the latter case, the data will be deleted after these reasons no longer apply.</p>
+        
+        <h3>General information on the legal basis for data processing on this website</h3>
+        <p>If you have consented to data processing, we process your personal data on the basis of Art. 6 para. 1 lit. a GDPR or Art. 9 para. 2 lit. a GDPR, if special categories of data according to Art. 9 para. 1 GDPR are processed. In the case of explicit consent to the transfer of personal data to third countries, data processing is also based on Art. 49 para. 1 lit. a GDPR. If you have consented to the storage of cookies or to access to information in your terminal device (e.g. via device fingerprinting), the data processing is additionally based on § 25 para. 1 TTDSG. Consent can be revoked at any time. If your data is required for contract fulfillment or for the implementation of pre-contractual measures, we process your data on the basis of Art. 6 para. 1 lit. b GDPR. Furthermore, we process your data if this is necessary for the fulfillment of a legal obligation on the basis of Art. 6 para. 1 lit. c GDPR. Data processing may also be carried out on the basis of our legitimate interest according to Art. 6 para. 1 lit. f GDPR. The relevant legal bases in each individual case are explained in the following paragraphs of this privacy policy.</p>
+        
+        <h3>Information on data transfer to the USA and other third countries</h3>
+        <p>Among other things, we use tools from companies based in the USA or other third countries that are not secure under data protection law. If these tools are active, your personal data may be transferred to these third countries and processed there. We would like to point out that no level of data protection comparable to that in the EU can be guaranteed in these countries. For example, US companies are obliged to hand over personal data to security authorities without you as a data subject being able to take legal action against this. It can therefore not be ruled out that US authorities (e.g. intelligence services) process, evaluate and permanently store your data on US servers for monitoring purposes. We have no influence on these processing activities.</p>
+        
+        <h3>Revocation of your consent to data processing</h3>
+        <p>Many data processing operations are only possible with your express consent. You can revoke consent you have already given at any time. The legality of the data processing carried out until the revocation remains unaffected by the revocation.</p>
+        
+        <h3>Right to object to data collection in special cases and to direct advertising (Art. 21 GDPR)</h3>
+        <p>IF DATA PROCESSING IS BASED ON ART. 6 PARA. 1 LIT. E OR F GDPR, YOU HAVE THE RIGHT TO OBJECT TO THE PROCESSING OF YOUR PERSONAL DATA AT ANY TIME FOR REASONS ARISING FROM YOUR PARTICULAR SITUATION; THIS ALSO APPLIES TO PROFILING BASED ON THESE PROVISIONS. THE RESPECTIVE LEGAL BASIS ON WHICH PROCESSING IS BASED CAN BE FOUND IN THIS PRIVACY POLICY. IF YOU OBJECT, WE WILL NO LONGER PROCESS YOUR PERSONAL DATA UNLESS WE CAN DEMONSTRATE COMPELLING LEGITIMATE GROUNDS FOR PROCESSING THAT OVERRIDE YOUR INTERESTS, RIGHTS AND FREEDOMS, OR THE PROCESSING SERVES TO ASSERT, EXERCISE OR DEFEND LEGAL CLAIMS (OBJECTION ACCORDING TO ART. 21 PARA. 1 GDPR).</p>
+        <p>IF YOUR PERSONAL DATA IS PROCESSED FOR DIRECT ADVERTISING PURPOSES, YOU HAVE THE RIGHT TO OBJECT AT ANY TIME TO THE PROCESSING OF YOUR PERSONAL DATA FOR THE PURPOSE OF SUCH ADVERTISING; THIS ALSO APPLIES TO PROFILING INSOFAR AS IT IS CONNECTED WITH SUCH DIRECT ADVERTISING. IF YOU OBJECT, YOUR PERSONAL DATA WILL SUBSEQUENTLY NO LONGER BE USED FOR DIRECT ADVERTISING PURPOSES (OBJECTION ACCORDING TO ART. 21 PARA. 2 GDPR).</p>
+        
+        <h3>Right to lodge a complaint with the competent supervisory authority</h3>
+        <p>In the event of violations of the GDPR, data subjects have the right to lodge a complaint with a supervisory authority, in particular in the Member State of their habitual residence, their place of work or the place of the alleged violation. The right to lodge a complaint is without prejudice to other administrative or judicial remedies.</p>
+        
+        <h3>Right to data portability</h3>
+        <p>You have the right to have data that we process automatically on the basis of your consent or in fulfillment of a contract handed over to you or to a third party in a common, machine-readable format. If you request the direct transfer of the data to another responsible party, this will only be done to the extent that it is technically feasible.</p>
+        
+        <h3>Information, correction and deletion</h3>
+        <p>Within the framework of the applicable legal provisions, you have the right at any time to free information about your stored personal data, its origin and recipients and the purpose of data processing and, if necessary, a right to correction or deletion of this data. For this and other questions on the subject of personal data, you can contact us at any time.</p>
+        
+        <h3>Right to restriction of processing</h3>
+        <p>You have the right to request the restriction of the processing of your personal data. For this purpose, you can contact us at any time. The right to restriction of processing exists in the following cases:</p>
+        <ul>
+            <li>If you dispute the accuracy of your personal data stored by us, we usually need time to verify this. For the duration of the verification, you have the right to request the restriction of the processing of your personal data.</li>
+            <li>If the processing of your personal data happened/is happening unlawfully, you can request the restriction of data processing instead of deletion.</li>
+            <li>If we no longer need your personal data, but you need it to exercise, defend or assert legal claims, you have the right to request restriction of processing of your personal data instead of deletion.</li>
+            <li>If you have lodged an objection according to Art. 21 para. 1 GDPR, a balancing of your and our interests must be carried out. As long as it has not yet been determined whose interests prevail, you have the right to request the restriction of the processing of your personal data.</li>
+        </ul>
+        <p>If you have restricted the processing of your personal data, this data may - apart from being stored - only be processed with your consent or for the assertion, exercise or defense of legal claims or for the protection of the rights of another natural or legal person or for reasons of important public interest of the European Union or a Member State.</p>
+        
+        <h2>4. Data Collection on this Website</h2>
+        <h3>Cookies</h3>
+        <p>Our internet pages use so-called "cookies". Cookies are small data packages and do not cause any damage to your terminal device. They are either stored temporarily for the duration of a session (session cookies) or permanently (permanent cookies) on your terminal device. Session cookies are automatically deleted after your visit ends. Permanent cookies remain stored on your terminal device until you delete them yourself or until they are automatically deleted by your web browser.</p>
+        <p>Cookies can originate from us (first-party cookies) or from third-party companies (so-called third-party cookies). Third-party cookies enable the integration of certain services from third-party companies within websites (e.g. cookies for processing payment services).</p>
+        <p>Cookies have various functions. Many cookies are technically necessary, as certain website functions would not work without them (e.g. the shopping cart function or the display of videos). Other cookies can be used to evaluate user behavior or display advertising.</p>
+        <p>Cookies that are necessary to carry out the electronic communication process, to provide certain functions you want (e.g. for the shopping cart function) or to optimize the website (e.g. cookies for measuring the web audience) are stored on the basis of Art. 6 para. 1 lit. f GDPR, unless another legal basis is specified. The website operator has a legitimate interest in storing necessary cookies for the technically error-free and optimized provision of its services. If consent to the storage of cookies and comparable recognition technologies has been requested, processing is carried out exclusively on the basis of this consent (Art. 6 para. 1 lit. a GDPR and § 25 para. 1 TTDSG); consent can be revoked at any time.</p>
+        <p>You can set your browser so that you are informed about the setting of cookies and only allow cookies in individual cases, exclude the acceptance of cookies for certain cases or in general, and activate the automatic deletion of cookies when closing the browser. When cookies are deactivated, the functionality of this website may be limited.</p>
+        <p>Which cookies and services are used on this website can be found in this privacy policy.</p>
+        
+        <h3>Consent with Usercentrics</h3>
+        <p>This website uses the consent technology of Usercentrics to obtain your consent for the storage of certain cookies on your terminal device or for the use of certain technologies and to document this in a data protection-compliant manner. The provider of this technology is Usercentrics GmbH, Sendlinger Str. 7, 80331 Munich, Germany, website: <a href="https://usercentrics.com/" target="_blank" rel="noopener noreferrer">https://usercentrics.com/</a> (hereinafter "Usercentrics").</p>
+        <p>When you enter our website, the following personal data is transferred to Usercentrics:</p>
+        <ul>
+            <li>Your consent(s) or revocation of your consent(s)</li>
+            <li>Your IP address</li>
+            <li>Information about your browser</li>
+            <li>Information about your terminal device</li>
+            <li>Time of your visit to the website</li>
+        </ul>
+        <p>Furthermore, Usercentrics stores a cookie in your browser to be able to assign the consents given or their revocation to you. The data collected in this way is stored until you ask us to delete it, delete the Usercentrics cookie yourself or the purpose for data storage no longer applies. Mandatory legal storage obligations remain unaffected.</p>
+        <p>Usercentrics is used to obtain the legally required consent for the use of certain technologies. The legal basis for this is Art. 6 para. 1 lit. c GDPR.</p>
+        
+        <h3>Server Log Files</h3>
+        <p>The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. These are:</p>
+        <ul>
+            <li>Browser type and browser version</li>
+            <li>Operating system used</li>
+            <li>Referrer URL</li>
+            <li>Host name of the accessing computer</li>
+            <li>Time of the server request</li>
+            <li>IP address</li>
+        </ul>
+        <p>This data is not merged with other data sources.</p>
+        <p>This data is collected on the basis of Art. 6 para. 1 lit. f GDPR. The website operator has a legitimate interest in the technically error-free presentation and optimization of its website - for this purpose, the server log files must be collected.</p>
+        
+        <h2>5. Analytics and Advertising</h2>
+        <h3>Google AdSense</h3>
+        <p>This website uses Google AdSense, a service for integrating advertisements from Google Ireland Limited ("Google"), Gordon House, Barrow Street, Dublin 4, Ireland.</p>
+        <p>Google AdSense uses so-called "cookies", text files that are stored on your computer and that enable an analysis of the use of the website. Google AdSense also uses so-called web beacons (invisible graphics). Through these web beacons, information such as visitor traffic on these pages can be evaluated.</p>
+        <p>The information generated by cookies and web beacons about the use of this website (including your IP address) and delivery of advertising formats is transmitted to a Google server in the USA and stored there. This information can be passed on by Google to Google's contractual partners. However, Google will not merge your IP address with other data stored by you.</p>
+        <p>You can prevent the installation of cookies by setting your browser software accordingly; however, we point out that in this case you may not be able to use all functions of this website to their full extent. By using this website, you consent to the processing of data about you by Google in the manner described above and for the purpose mentioned above.</p>
+        <p>The use of Google AdSense is based on Art. 6 para. 1 lit. f GDPR. The website operator has a legitimate interest in the most cost-effective marketing possible for its website. If appropriate consent has been requested, processing is carried out exclusively on the basis of Art. 6 para. 1 lit. a GDPR and § 25 para. 1 TTDSG, insofar as the consent includes the storage of cookies or access to information in the user's terminal device (e.g. device fingerprinting) within the meaning of TTDSG. Consent can be revoked at any time.</p>
+        <p>Data transfer to the USA is based on the standard contractual clauses of the EU Commission. Details can be found here: <a href="https://privacy.google.com/businesses/controllerterms/mccs/" target="_blank" rel="noopener noreferrer">https://privacy.google.com/businesses/controllerterms/mccs/</a>.</p>
+        
+        <h3>Google AdSense with personalized advertising</h3>
+        <p>This website uses Google AdSense with personalized advertising. The provider is Google Ireland Limited ("Google"), Gordon House, Barrow Street, Dublin 4, Ireland.</p>
+        <p>This feature allows Google to target ads to you based on your visits to this and other websites. The ads are displayed based on your previous user behavior.</p>
+        <p>The use of Google AdSense with personalized advertising is based on your consent according to Art. 6 para. 1 lit. a GDPR and § 25 para. 1 TTDSG. You can revoke this consent at any time.</p>
+        <p>For more information about Google's advertising practices, see the Google Privacy Policy at: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.</p>
+        
+        <h2>6. Newsletter</h2>
+        <h3>Newsletter Data</h3>
+        <p>If you would like to receive the newsletter offered on the website, we need an email address from you as well as information that allows us to verify that you are the owner of the specified email address and that you agree to receive the newsletter. Further data is not or only collected on a voluntary basis. For the processing of newsletters, we use newsletter service providers, which are described below.</p>
+        
+        <h2>7. Plugins and Tools</h2>
+        <h3>YouTube with enhanced privacy protection</h3>
+        <p>This website embeds videos from YouTube. The operator of the pages is Google Ireland Limited ("Google"), Gordon House, Barrow Street, Dublin 4, Ireland.</p>
+        <p>We use YouTube in enhanced privacy mode. According to YouTube, this mode ensures that YouTube does not store information about visitors to this website before they watch the video. Nevertheless, the transmission of data to YouTube partners is not necessarily excluded by the enhanced privacy mode. This is the case regardless of whether you watch a video or not.</p>
+        <p>As soon as you start a YouTube video, a connection to YouTube's servers is established. The YouTube server is informed which of our pages you have visited. If you are logged into your YouTube account, you enable YouTube to assign your surfing behavior directly to your personal profile. You can prevent this by logging out of your YouTube account.</p>
+        <p>Furthermore, after starting a video, YouTube can place various cookies on your terminal device or use comparable recognition technologies (e.g. device fingerprinting). In this way, YouTube can receive information about visitors to this website. This information is used, among other things, to collect video statistics, improve user-friendliness and prevent fraud attempts.</p>
+        <p>If necessary, after starting a YouTube video, further data processing operations may be triggered that are beyond our control.</p>
+        <p>The use of YouTube is in the interest of an appealing presentation of our online offers. This represents a legitimate interest within the meaning of Art. 6 para. 1 lit. f GDPR. If appropriate consent has been requested, processing is carried out exclusively on the basis of Art. 6 para. 1 lit. a GDPR and § 25 para. 1 TTDSG, insofar as the consent includes the storage of cookies or access to information in the user's terminal device (e.g. device fingerprinting) within the meaning of TTDSG. Consent can be revoked at any time.</p>
+        <p>For more information on data protection at YouTube, please see their privacy policy at: <a href="https://policies.google.com/privacy?hl=en" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy?hl=en</a>.</p>
+        
+        <h2>8. Your Rights</h2>
+        <p>Under the GDPR, you have the following rights:</p>
+        <ul>
+            <li><strong>Right of access (Art. 15 GDPR):</strong> You have the right to receive information about your personal data processed by us.</li>
+            <li><strong>Right to rectification (Art. 16 GDPR):</strong> You have the right to request the correction of inaccurate personal data and the completion of incomplete personal data.</li>
+            <li><strong>Right to erasure (Art. 17 GDPR):</strong> You have the right to request the deletion of your personal data under certain conditions.</li>
+            <li><strong>Right to restriction of processing (Art. 18 GDPR):</strong> You have the right to request the restriction of the processing of your personal data under certain conditions.</li>
+            <li><strong>Right to data portability (Art. 20 GDPR):</strong> You have the right to receive your personal data in a structured, commonly used and machine-readable format.</li>
+            <li><strong>Right to object (Art. 21 GDPR):</strong> You have the right to object to the processing of your personal data under certain conditions.</li>
+            <li><strong>Right to withdraw consent (Art. 7(3) GDPR):</strong> If processing is based on your consent, you have the right to withdraw your consent at any time.</li>
+            <li><strong>Right to lodge a complaint (Art. 77 GDPR):</strong> You have the right to lodge a complaint with a supervisory authority.</li>
+        </ul>
+        
+        <h2>9. Data Retention</h2>
+        <p>Personal data is stored only as long as necessary for the purposes for which it was collected or as required by law. After the purpose has been fulfilled or the legal retention period has expired, the data will be deleted or anonymized.</p>
+        
+        <h2>10. Data Security</h2>
+        <p>We use appropriate technical and organizational security measures to protect your data against accidental or intentional manipulation, partial or complete loss, destruction or unauthorized access by third parties. Our security measures are continuously improved in line with technological developments.</p>
+        
+        <h2>11. Changes to this Privacy Policy</h2>
+        <p>We reserve the right to update this privacy policy from time to time to ensure it remains current with legal requirements and our data processing practices. The current version is always available on our website.</p>
+        
+        <p><strong>Last updated:</strong> June 2025</p>
+        
         <button class="close-btn" onclick="showSection(event, 'home')">Back to Homepage</button>
       </div>
     </div>
@@ -315,22 +489,28 @@
       // --- Cookie Consent Logic ---
       function loadMarketingScripts() {
         console.log('MARKETING SCRIPTS WOULD LOAD NOW.');
+        // Here you would load Google AdSense and other marketing scripts
+        // Example: loadGoogleAdSense();
       }
+      
       const cookieConsent = localStorage.getItem('cookieConsent');
       if (cookieConsent === 'accepted') {
         loadMarketingScripts();
       } else if (!cookieConsent) {
         cookieBanner.style.display = 'block';
       }
+      
       window.acceptCookies = function() {
         localStorage.setItem('cookieConsent', 'accepted');
         cookieBanner.style.display = 'none';
         loadMarketingScripts();
       }
+      
       window.declineCookies = function() {
         localStorage.setItem('cookieConsent', 'declined');
         cookieBanner.style.display = 'none';
       }
+      
       window.openCookieSettings = function(event) {
           if(event) event.preventDefault();
           cookieBanner.style.display = 'block';
@@ -349,7 +529,7 @@
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('onclick').includes(`'${sectionName}'`)) {
+            if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(`'${sectionName}'`)) {
                 link.classList.add('active');
             }
         });
